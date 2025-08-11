@@ -6,24 +6,12 @@ const App = () => {
   const [currentWord, setCurrentWord] = React.useState("react");
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessLetters, setGuessLetters] = React.useState([]);
-console.log(guessLetters)
+  console.log(guessLetters);
   function handleLetterClick(letter) {
-    setGuessLetters(prevLetters => 
-            prevLetters.includes(letter) ? 
-                prevLetters : 
-                [...prevLetters, letter]
-        )
+    setGuessLetters((prevLetters) =>
+      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
+    );
   }
-  /**
-   * Goal: Allow the user to start guessing the letters
-   *
-   * Challenge: Create a new array in state to hold user's
-   * guessed letters. When the user chooses a letter, add
-   * that letter to this state array.
-   *
-   * Don't worry about whether it was a right or wrong
-   * guess yet.
-   */
   return (
     <main>
       <header>
@@ -57,6 +45,11 @@ console.log(guessLetters)
       </section>
       <section onClick={handleLetterClick} className="alphabet-buttons">
         {alphabet.split("").map((char) => {
+          const isGuessed = guessLetters.includes(char);
+          const isCorrect = isGuessed && currentWord.includes(char);
+          const isWrong = isGuessed && !currentWord.includes(char);
+
+          
           return (
             <button
               onClick={() => handleLetterClick(char.toUpperCase())}
