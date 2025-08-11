@@ -107,3 +107,10 @@ span.chip {
     cursor: pointer;
     margin-top: 30px;
 }
+
+.correct {
+  background-color: #10A95B ;
+}
+.wrong {
+  background-color: #EC5D49;
+}
