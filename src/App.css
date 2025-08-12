@@ -1,78 +1,103 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: "Hanken Grotesk", Arial, sans-serif;
-    background-color: #262626;
-    color: #D9D9D9;
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+  margin: 0;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  background-color: #262626;
+  color: #d9d9d9;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
 
 header > h1 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #F9F4DA;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #f9f4da;
 }
 
 header > p {
-    font-size: 0.875rem;
-    max-width: 350px;
-    color: #8E8E8E;
+  font-size: 0.875rem;
+  max-width: 350px;
+  color: #8e8e8e;
 }
 
-section.game-status {
-    background-color: #10A95B;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #F9F4DA;
-    border-radius: 4px;
-    margin-block: 30px;
+.game-status {
+  height: 50px;
+  margin: 30px 0;
+  border-radius: 4px;
 }
 
-section.game-status > p {
-    margin: 5px;
+.game-status p {
+  margin: 10px;
 }
 
-section.game-status > h2 {
-    font-size: 1.25rem;
-    margin: 5px
+.game-status h2 {
+  font-size: 1.25rem;
+  margin: 5px;
 }
 
-section.language-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    max-width: 350px;
+.lose-status {
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #ba2a2a;
 }
 
-span.chip {
-    border-radius: 3px;
-    padding: 4.5px;
+.win-status {
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #10a95b;
+}
+
+.language-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 350px;
+}
+
+.chip {
+  border-radius: 3px;
+  padding: 4.5px;
+  position: relative;
+}
+
+.chip.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .word-guess {
- height: 40px;
-    width: 40px;
-    background-color: #323232;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.125rem;
-    border-bottom: 1px solid #F9F4DA;
+  height: 40px;
+  width: 40px;
+  background-color: #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125rem;
+  border-bottom: 1px solid #f9f4da;
 }
 
-.guess-el{
+.guess-el {
   font-size: 1.25rem;
   padding: 25px 0;
   display: flex;
@@ -80,37 +105,37 @@ span.chip {
   gap: 3px;
 }
 
-.alphabet-buttons{
+.alphabet-buttons {
   max-width: 350px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
 }
 
-.char-btn{
+.char-btn {
   padding: 15px;
-  background-color: #FCBA29;
+  background-color: #fcba29;
   border: none;
   border-radius: 7px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-.new-game-btn{
-      background-color: #11B5E5;
-    border: 1px solid #D7D7D7;
-    border-radius: 4px;
-    width: 225px;
-    height: 40px;
-    padding: 6px 12px;
-    display: block;
-    margin-inline: auto;
-    cursor: pointer;
-    margin-top: 30px;
+.new-game-btn {
+  background-color: #11b5e5;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  width: 225px;
+  height: 40px;
+  padding: 6px 12px;
+  display: block;
+  margin-inline: auto;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
 .correct {
-  background-color: #10A95B ;
+  background-color: #10a95b;
 }
 .wrong {
-  background-color: #EC5D49;
+  background-color: #ec5d49;
 }
