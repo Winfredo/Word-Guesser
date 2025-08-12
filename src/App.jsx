@@ -1,9 +1,15 @@
 import React from "react";
 import "./App.css";
 import Data from "./data";
+import {words} from "./words";
+
+// Randomly select a word from the words array
+const randomIndex = Math.floor(Math.random() * words.length);
+const currentGuessedWord = words[randomIndex];
+console.log(currentGuessedWord); 
 
 const App = () => {
-  const [currentWord, setCurrentWord] = React.useState("fred");
+  const [currentWord, setCurrentWord] = React.useState(currentGuessedWord);
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessLetters, setGuessLetters] = React.useState([]);
   const wrongGuessCount = guessLetters.filter(
@@ -16,6 +22,11 @@ const App = () => {
   const isGameOver = isGameWon || isGameLost;
 
   console.log(wrongGuessCount);
+
+  function resetGame (){
+    setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+    setGuessLetters([]);
+  }
 
   function handleLetterClick(letter) {
     setGuessLetters((prevLetters) =>
@@ -78,7 +89,8 @@ const App = () => {
       </section>
 
       {/* Alphabet Buttons */}
-      <section className="alphabet-buttons">
+      
+        <section className="alphabet-buttons">
         {alphabet.split("").map((letter) => {
           const isGuessed = guessLetters.includes(letter);
           const isCorrect = isGuessed && currentWord.includes(letter);
@@ -91,13 +103,14 @@ const App = () => {
               }`}
               key={letter}
               onClick={() => handleLetterClick(letter)}
+              disabled={isGameOver}
             >
               {letter.toUpperCase()}
             </button>
           );
         })}
       </section>
-      {isGameOver ? <button className="new-game-btn">New Game</button> : null}
+      {isGameOver ? <button onClick={resetGame} className="new-game-btn">New Game</button> : null}
     </main>
   );
 };
