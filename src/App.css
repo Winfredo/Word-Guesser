@@ -120,6 +120,12 @@ header > p {
   cursor: pointer;
 }
 
+.char-btn:disabled{
+    cursor: not-allowed;
+    opacity: 0.5
+}
+
+
 .new-game-btn {
   background-color: #11b5e5;
   border: 1px solid #d7d7d7;
