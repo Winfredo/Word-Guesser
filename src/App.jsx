@@ -1,17 +1,18 @@
 import React from "react";
 import "./App.css";
 import Data from "./data";
-import {words} from "./words";
+import { words } from "./words";
+import Confetti from "react-confetti";
 
-// Randomly select a word from the words array
 const randomIndex = Math.floor(Math.random() * words.length);
 const currentGuessedWord = words[randomIndex];
-console.log(currentGuessedWord); 
 
 const App = () => {
   const [currentWord, setCurrentWord] = React.useState(currentGuessedWord);
+  console.log(currentWord);
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessLetters, setGuessLetters] = React.useState([]);
+
   const wrongGuessCount = guessLetters.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
@@ -23,7 +24,7 @@ const App = () => {
 
   console.log(wrongGuessCount);
 
-  function resetGame (){
+  function resetGame() {
     setCurrentWord(words[Math.floor(Math.random() * words.length)]);
     setGuessLetters([]);
   }
@@ -52,8 +53,12 @@ const App = () => {
               <p>
                 {isGameWon
                   ? "Well done! 🎉"
-                  : "You lose! Better start learning Assembly 😭"}
+                  : `You lose! Better start learning Assembly 😭 `}
               </p>
+              {isGameWon && <p>Congratulations! You guessed the word!</p>}
+              {isGameLost && (
+                <p>{`The word was: ${currentWord.toUpperCase()}`}</p>
+              )}
             </>
           ) : null}
         </section>
@@ -89,8 +94,8 @@ const App = () => {
       </section>
 
       {/* Alphabet Buttons */}
-      
-        <section className="alphabet-buttons">
+
+      <section className="alphabet-buttons">
         {alphabet.split("").map((letter) => {
           const isGuessed = guessLetters.includes(letter);
           const isCorrect = isGuessed && currentWord.includes(letter);
@@ -110,7 +115,14 @@ const App = () => {
           );
         })}
       </section>
-      {isGameOver ? <button onClick={resetGame} className="new-game-btn">New Game</button> : null}
+      {isGameOver ? (
+        <button onClick={resetGame} className="new-game-btn">
+          New Game
+        </button>
+      ) : null}
+      {isGameWon && <Confetti
+    />
+}
     </main>
   );
 };
