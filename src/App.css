@@ -64,6 +64,7 @@ header > p {
   gap: 5px;
   justify-content: center;
   max-width: 350px;
+  padding-top: 10px;
 }
 
 .chip {

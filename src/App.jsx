@@ -94,7 +94,6 @@ const App = () => {
       </section>
 
       {/* Alphabet Buttons */}
-
       <section className="alphabet-buttons">
         {alphabet.split("").map((letter) => {
           const isGuessed = guessLetters.includes(letter);
@@ -120,9 +119,7 @@ const App = () => {
           New Game
         </button>
       ) : null}
-      {isGameWon && <Confetti
-    />
-}
+      {isGameWon && <Confetti />}
     </main>
   );
 };
